@@ -18,6 +18,11 @@ def render_node(node, wrap_list=False):
     if isinstance(node, dict):
         res = ""
         for key, value in node.items():
+            if isinstance(value, list):
+                value = "".join(
+                    [render_node(subnode, wrap_list=True) for subnode in value]
+                )
+                value = f"<ul>{value}</ul>"
             res += f"<{key}>{value}</{key}>"
         if wrap_list:
             res = f"<li>{res}</li>"
