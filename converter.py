@@ -7,17 +7,20 @@ BASIC_DIR = os.path.dirname(__file__)
 
 def render_to_html(source):
     if isinstance(source, list):
-        return "".join([render_node(node) for node in source])
+        html = "".join([render_node(node, wrap_list=True) for node in source])
+        return f"<ul>{html}</ul>"
     if isinstance(source, dict):
         return render_node(source)
     raise TypeError("Incorrect format. Source data must be a list or dict ")
 
 
-def render_node(node):
+def render_node(node, wrap_list=False):
     if isinstance(node, dict):
         res = ""
         for key, value in node.items():
             res += f"<{key}>{value}</{key}>"
+        if wrap_list:
+            res = f"<li>{res}</li>"
         return res
     raise TypeError("Node must be a dict")
 
