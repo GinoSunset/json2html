@@ -15,7 +15,10 @@ def render_to_html(source):
 
 def render_node(node):
     if isinstance(node, dict):
-        return f"<h1>{node['title']}</h1><p>{node['body']}</p>"
+        res = ""
+        for key, value in node.items():
+            res += f"<{key}>{value}</{key}>"
+        return res
     raise TypeError("Node must be a dict")
 
 

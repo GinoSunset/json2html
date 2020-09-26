@@ -1,6 +1,6 @@
 JSON2HTML
 ===============
-project to generate html from json. By default, the script searches for the source file in its source.json and sends data from it to the converter. The result is a file `index.htm`l in which title is recorded in the `h1` tag, and body is recorded in the `p` tag
+project to generate html from json. By default, the script searches for the source file in its source.json and sends data from it to the converter. The result is a file `index.htm`. Tags for html are specified as keys in json
 
 REQUIREMENT
 -------
